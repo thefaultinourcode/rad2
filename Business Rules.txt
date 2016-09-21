@@ -1,0 +1,22 @@
+Business Rules
+
+
+1. 1 User ID per Account
+
+2. A person can belong to multiple agencies, but must have a seperate ID for each agency. 
+Two accounts with the same first name, last name, and email is fine because of the different User ID's.
+Belonging to multiple agencies is rare. 
+
+
+3. Must have every attribute listed in the "rad1 user .html" file. (user ID, first name, last name, address, email, VPN-Profile etc..)
+
+
+4. Tickets are created anytime we fix a customers issue. Every user ID doesn't need a ticket. 
+
+
+5. 1 certificate per account. jsmith's certificate and ksmith's certificate are not the same, 
+even if they are using the same computer. 
+
+
+6. Every account must have a change log, this is seperate from Tickets. Contains changes to account, not customer service calls
+
