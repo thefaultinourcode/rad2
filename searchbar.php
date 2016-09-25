@@ -34,7 +34,6 @@
           <li class="nav-item">
                 <form class="form-inline" action="results.php"> <!-- Beginning of the search box -->
                   <input name="query" class="form-control" type="text" placeholder="Search">
-                  <button type="submit" class="btn btn-success"> Search </button>
                </form>
           </li>
           
