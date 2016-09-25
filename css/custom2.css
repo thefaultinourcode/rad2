@@ -34,6 +34,7 @@ body {
     display: inline-block;
 }
 
+
 .dropdown-content {
 	background-color: white;
     display: none;
@@ -59,7 +60,9 @@ body {
     background-color: #f7f7f9;
 }
 
-
+.nav-item .dropdown-toggle{
+    cursor: pointer;
+}
 
 
 
@@ -92,3 +95,9 @@ border-radius: 0px 5px 5px 0px;
 .col-md-2 a{
 padding: 15px;
 }
+
+.navbar-form .form-control{
+    width: 150%;
+
+}
+
