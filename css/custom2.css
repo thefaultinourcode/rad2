@@ -59,9 +59,13 @@ body {
     background-color: #f7f7f9;
 }
 
+.nav-item .dropdown-menu .dropdown-divider{
+    height: 1px;
+}
 
-
-
+.nav-item .navbar-form{
+    width: 150%;
+}
 
 
 .form-inline{
