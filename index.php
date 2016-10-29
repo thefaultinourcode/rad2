@@ -1,18 +1,9 @@
-<?php
-include 'header.php';?>
+<?php include 'header.php';?>
+<title>Home</title>
+<?php include 'searchbar.php';?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-<!--<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script> -->
-    
-</head>
 <body>
-<?php
-include 'searchbar.php';?>
-
+    
 <div id="output">
 </div>
 
@@ -28,28 +19,11 @@ include 'searchbar.php';?>
         <li><a href="#">&raquo;</a></li>
       </ul>
  </center>  
-
+    
+    
 <?php include 'footer.php'; ?>
-<script type="text/javascript">
     
-    var filterq="";
-
-    function myFilter(){
-        
-        $('select').on('change', function() {
-        alert( this.value );
-        })
-    }
-
-    
-    function searchq(){
-        var searchTxt = document.getElementById('inputq').value;
-        //var searchTxt = $"("input[name='search']").val";
-        $.post("search.php", {searchVal: searchTxt}, function(output){
-            $("#output").html(output);
-        });
-    }
+<script>
     </script>
-
 </body>
 </html>

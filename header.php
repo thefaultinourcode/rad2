@@ -7,11 +7,8 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <link rel="icon" href="images/favicon.ico">
-      <!-- Bootstrap core CSS -->
-      <link href="css/core.css" rel="stylesheet">
       <link href="css/bootstrap.min.css" rel="stylesheet">
-      <!-- Custom styles for this template -->
-      <link href="css/navbar-top-fixed.css" rel="stylesheet">
-      <link href="css/custom2.css" rel="stylesheet" type="text/css">
+      <link href="css/custom.css" rel="stylesheet" type="text/css">
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-      <link href="css/results2.css" rel="stylesheet" type="text/css">
+
+      
