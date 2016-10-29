@@ -15,8 +15,8 @@ The idea was to take common task, such as sending certifications to end-users an
 
 ##Members:
 
-* Julian Thomas - Project Manager
-* Leah Ramsier - Search Filter, Search bar design
+* [Julian Thomas](http://www.julianthomas.xyz) - Project Manager
+* [Leah Ramsier](http://www.leaherynramsier.com) - Search Filter, Search bar design
 * Ricky Basen - Login System, Results design
-* Ahmed Mahdy - Created the CRUD system
+* [Ahmed Mahdy](http://theahmedmahdy.com/) - Created the CRUD system
 * RJ Bland - Front End
