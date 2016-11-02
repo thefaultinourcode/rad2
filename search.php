@@ -39,6 +39,8 @@ if(isset($_POST['searchVal'])){
     if($count ==0){
             $output = 'There was no search result!';
     }else{
+
+        $counter=0;
         while($row = mysqli_fetch_array($query)){
             $id = $row['id'];
             $fname = $row['f_name'];
@@ -58,11 +60,12 @@ if(isset($_POST['searchVal'])){
                              <a class="tv8" href="mailto:'.$email.'?Subject=Certification"><img src="images/cert.png" alt="Send Certification to Email" style="width:30px;height:30px;"></a>
                         </td>
                         <td><input class="quickEdit" name="flname" value="' . $fname . ' ' . $lname . '"/></td>
-                        <td>' . $email. '</td>
+                        <td id='.++$counter.'>' . $email. '</td>
                         <td>' . $userID . '</td>
                         <td>' . $password . '</td>
 
                         <td><h4><span class="label ' .$classStatus.'">'.$status.'</span></h4></td>
+
               <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal' . $counter . '">View</button></td>
                         
                         <!-- Modal -->
@@ -73,7 +76,7 @@ if(isset($_POST['searchVal'])){
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">George Washington</h4>
+                        <h4 class="modal-title">Ticket Information</h4>
                       </div>
                       <div class="modal-body">
                         <p>' . $fname . ' ' . $lname . ' ticket info will be found here.</p>
