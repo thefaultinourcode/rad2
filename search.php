@@ -1,3 +1,4 @@
+
 <?php
 
 $link = mysqli_connect("localhost", "root", "mysql", "test") or die("Error connecting to database: ".mysql_error());

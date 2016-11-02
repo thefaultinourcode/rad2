@@ -8,6 +8,13 @@ function searchq(){
     })
 }
 
+function myFilter(){
+        //var filterq = $("#filter option:selected").text();
+        var filterOption = document.getElementById('filter').value;
+        console.log(filterOption);
+      }; 
+        //alert(filterq);
+  
 
 //Edit.php Ajax stuff
 function ajaxFunction(){
