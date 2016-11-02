@@ -63,10 +63,10 @@ if(isset($_POST['searchVal'])){
                         <td>' . $password . '</td>
 
                         <td><h4><span class="label ' .$classStatus.'">'.$status.'</span></h4></td>
-              <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">View</button></td><!-- Trigger the modal with a button -->
+              <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal' . $counter . '">View</button></td>
                         
                         <!-- Modal -->
-                <div id="myModal" class="modal fade" role="dialog">
+                <div id="myModal' . $counter . '" class="modal fade" role="dialog">
                   <div class="modal-dialog">
 
                     <!-- Modal content-->
