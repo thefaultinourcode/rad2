@@ -7,10 +7,29 @@ $output = '';
 
 if(isset($_POST['searchVal'])){
     $searchq= $_POST['searchVal'];
-    
+
+    $filterVar = $_POST['filterVal'];
+
+    if($filterVar == 'fname'){
+      $query = mysqli_query($link, "SELECT * FROM users
+            WHERE (`f_name` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
+    } 
+    elseif ($filterVar == 'lname') {
+          $query =mysqli_query($link, "SELECT * FROM users
+            WHERE (`l_name` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
+    }
+     elseif ($filterVar == 'userid') {
+      $query =mysqli_query($link, "SELECT * FROM users
+            WHERE (`userID` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
+    }
+     elseif ($filterVar == 'email') {
+      $query =mysqli_query($link, "SELECT * FROM users
+            WHERE (`email` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
+    }
+    else{
     $query =mysqli_query($link, "SELECT * FROM users
             WHERE (`f_name` LIKE '%".$searchq."%') OR (`l_name` LIKE '%".$searchq."%') OR (`email` LIKE '%".$searchq."%') OR (`userID` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
-
+  }
             echo 
                 '
                 <script>

@@ -3,18 +3,15 @@
 var searchTxt;
 function searchq(){
     var searchTxt = document.getElementById('inputq').value;
-    $.post("search.php", {searchVal: searchTxt}, function(output){
+    var filterOption = document.getElementById('filter').value;
+    console.log(filterOption);
+    $.post("search.php", {searchVal: searchTxt, filterVal: filterOption}, function(output){
         $("#output").html(output);
     })
 }
-
-function myFilter(){
-        //var filterq = $("#filter option:selected").text();
-        var filterOption = document.getElementById('filter').value;
-        console.log(filterOption);
-      }; 
-        //alert(filterq);
+ 
   
+
 
 //Edit.php Ajax stuff
 function ajaxFunction(){
