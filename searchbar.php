@@ -37,14 +37,15 @@
           </li>
 
           <li class="nav-item">
-                <form class="navbar-form" action="search.php" method="post"> <!-- Beginning of the search box -->
-                  <input class="form-control" id="inputq" type="text" name="search" placeholder="Search for members.." onkeydown="searchq();">
-                  <select id="filter">
-                    <option value="1" onclick="myFilter()">First Name</option>
-                    <option value="2" onclick="myFilter()">Last Name</option>
-                    <option value="3" onclick="myFilter()">User ID</option>
-                    <option value="4" onclick="myFilter()">Email</option>
-                    </select>
+                <form class="navbar-form" action="search.php" method="POST"> <!-- Beginning of the search box -->
+                  <input class="form-control" id="inputq" type="text" name="search" placeholder="Search for members.." onkeyup="searchq();">
+                  <select id="filter" onchange="searchq();">
+                    <option value="0"></option>
+                    <option value="fname">First Name</option>
+                    <option value="lname">Last Name</option>
+                    <option value="userid">User ID</option>
+                    <option value="email">Email</option>
+                  </select>
                </form>
           </li>
           

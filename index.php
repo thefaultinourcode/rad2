@@ -1,5 +1,8 @@
 <?php include 'header.php';?>
 <title>Home</title>
+
+
+
 <?php include 'searchbar.php';?>
 
 <body>

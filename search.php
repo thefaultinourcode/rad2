@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 $link = mysqli_connect("localhost", "root", "mysql", "test") or die("Error connecting to database: ".mysql_error());
 $output = '';
@@ -6,10 +6,34 @@ $output = '';
 
 if(isset($_POST['searchVal'])){
     $searchq= $_POST['searchVal'];
-    
-    $query =mysqli_query($link, "SELECT * FROM users
-            WHERE (`f_name` LIKE '%".$searchq."%') OR (`l_name` LIKE '%".$searchq."%') OR (`email` LIKE '%".$searchq."%') OR (`userID` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
 
+    $filterVar = $_POST['filterVal'];
+
+    if($searchq == ''){
+      echo "Please enter a search query to see results.<br>";
+    }
+    else{
+      if($filterVar == 'fname'){
+      $query = mysqli_query($link, "SELECT * FROM users
+            WHERE (`f_name` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
+      } 
+      elseif ($filterVar == 'lname') {
+          $query =mysqli_query($link, "SELECT * FROM users
+            WHERE (`l_name` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
+      }
+      elseif ($filterVar == 'userid') {
+      $query =mysqli_query($link, "SELECT * FROM users
+            WHERE (`userID` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
+      }
+      elseif ($filterVar == 'email') {
+      $query =mysqli_query($link, "SELECT * FROM users
+            WHERE (`email` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
+      }
+      else{
+      $query =mysqli_query($link, "SELECT * FROM users
+            WHERE (`f_name` LIKE '%".$searchq."%') OR (`l_name` LIKE '%".$searchq."%') OR (`email` LIKE '%".$searchq."%') OR (`userID` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
+      }
+    }
             echo 
                 '
                 <script>
@@ -34,9 +58,13 @@ if(isset($_POST['searchVal'])){
             </tr>
           </thead>
           <tbody>';
-
-    $count = mysqli_num_rows($query);
-    if($count ==0){
+    if($searchq != ''){
+        $count = mysqli_num_rows($query);
+    }
+    else{
+      $count = 0;
+    }
+    if($count == 0){
             $output = 'There was no search result!';
     }else{
 
