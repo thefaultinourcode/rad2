@@ -38,7 +38,7 @@
 
           <li class="nav-item">
                 <form class="navbar-form" action="search.php" method="POST"> <!-- Beginning of the search box -->
-                  <input class="form-control" id="inputq" type="text" name="search" placeholder="Search for members.." onkeydown="searchq();">
+                  <input class="form-control" id="inputq" type="text" name="search" placeholder="Search for members.." onkeyup="searchq();">
                   <select id="filter" onchange="searchq();">
                     <option value="0"></option>
                     <option value="fname">First Name</option>
