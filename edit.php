@@ -17,9 +17,51 @@ if ($_POST['action'] == 'Edit') {
     $userID = $formval['userID'];
     $status = $formval['status'];
           
-          
+switch ($status) {
+    case 'Deleted':
+        $option= '<select name="STATUS">
+  <option selected value="Deleted">Deleted</option>
+  <option value="Un-Deleted">Un-Deleted</option>
+  <option value="Not Active">Not Active</option>
+  <option value="Active">Active</option>
+</select>';
+        break;
+    case 'Un-Deleted':
+        $option= '<select name="STATUS">
+  <option value="Deleted">Deleted</option>
+  <option selected value="Un-Deleted">Un-Deleted</option>
+  <option value="Not Active">Not Active</option>
+  <option value="Active">Active</option>
+</select>';
+        break;
+    case 'Not Active':
+        $option= '<select name="STATUS">
+  <option value="Deleted">Deleted</option>
+  <option value="Un-Deleted">Un-Deleted</option>
+  <option selected value="Not Active">Not Active</option>
+  <option value="Active">Active</option>
+</select>';
+        break;
+    case 'Active':
+        $option= '<select name="STATUS">
+  <option value="Deleted">Deleted</option>
+  <option value="Un-Deleted">Un-Deleted</option>
+  <option value="Not Active">Not Active</option>
+  <option selected value="Active">Active</option>
+</select>';
+        break;
+    default:
+        $option= '<select name="STATUS">
+  <option value="Deleted">Deleted</option>
+  <option value="Un-Deleted">Un-Deleted</option>
+  <option value="Not Active">Not Active</option>
+  <option selected value="Active">Active</option>
+</select>';
+      }
 
-echo '
+
+echo'
+          
 <style>
 .form-control{
 width: 50%;
@@ -34,82 +76,101 @@ width: 9.666667%;
 padding-left:0px;
 }
 </style>
-<div class="editContainer">
 
-<div class="container">
    <body>
    
-   
-   
- <form method="post">
-<input id="BUTTON"type="button" value="Save" class="submit" />
 
-<input type="hidden" name="pk" value="'.$id.'"/>
-<div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 col-form-label"> User D</label>
-  <div class="col-xs-10">
-    <input name="USERID" class="form-control" type="text" value="'.$userID.'" id="example-text-input"/>
+
+<div class="container editControl">
+
+<center>
+<h1> Edit '.$fname.'\'s Information </h1>
+</center>
+
+ <form id="form">
+<input type="hidden" name="pk" value="'.$id.'">
+
+<div class="row">
+  <div class="col-md-6 editInput">
+    <span class="fa fa-user fa-2x"></span>
+    <input name="FNAME"  type="text" value="'.$fname.'" placeholder="First Name">
+  </div> <!--end col-md-6 -->
+
+  <div class="col-md-6 editInput">
+        <span class="fa fa-user fa-2x"></span>
+    <input name="LNAME"  type="text" value="'.$lname.'">
+  </div>  <!--end col-md-6 -->
+</div><!-- end row -->
+
+
+
+<div class="row">
+  <div class="col-md-6 editInput">
+        <span class="fa fa-grav fa-2x" aria-hidden="true"></span>
+    <input name="USERID"  type="text" value="'.$userID.'">
+  </div> <!--end col-md-6 -->
+
+  <div class="col-md-6 editInput">
+        <span class="fa fa-key fa-2x" aria-hidden="true"></span>
+    <input name="PASSWORD"  type="text" value="'.$password.'">
+  </div>  <!--end col-md-6 -->
+</div><!-- end row -->
+
+
+
+<div class="row">
+  <div class="col-md-6 editInput">
+          <span class="fa fa-envelope-o fa-2x" aria-hidden="true"></span>
+          <input name="EMAIL"  type="email" value="'.$email.'">
+    </div>  <!--end col-md-6 -->
+
+  <div class="col-md-6 editInput">
+        <span class="fa fa-caret-square-o-up fa-2x" aria-hidden="true"></span>
+    <input name="USERTYPE" placeholder="User Type" type="text">
+  </div>  <!--end col-md-6 -->
+</div><!-- end row -->
+
+
+
+
+<div class="row">
+  <div class="col-md-6 editInput">
+          <span class="fa fa-venus-mars fa-2x" aria-hidden="true"></span>
+    <input name="TITLE"  type="text" value="" placeholder="Title">
   </div>
-</div>
-<div class="form-group row">
-  <label for="example-search-input" class="col-xs-2 col-form-label">First Name</label>
-  <div class="col-xs-10">
-    <input name="FNAME" class="form-control" type="text" value="'.$fname.'" id="example-search-input"/>
+
+  <div class="col-md-6 editInput">
+            <span class="fa fa-sitemap fa-2x" aria-hidden="true"></span>
+    <input name="VPN" placeholder="VPN Profile" type="text">
+  </div>  <!--end col-md-6 -->
+</div><!-- end row -->
+
+
+
+
+<div class="row">
+  <div class="col-md-3 editInput">
+    '.$option.'
   </div>
-</div>
-<div class="form-group row">
-  <label for="example-email-input" class="col-xs-2 col-form-label">Last Name</label>
-  <div class="col-xs-10">
-    <input name="LNAME" class="form-control" type="text" value="'.$lname.'" id="example-email-input"/>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-url-input" class="col-xs-2 col-form-label">Email</label>
-  <div class="col-xs-10">
-    <input name="EMAIL" class="form-control" type="email" value="'.$email.'" id="example-url-input"/>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-tel-input" class="col-xs-2 col-form-label">Title</label>
-  <div class="col-xs-10">
-    <input name="TITLE" class="form-control" type="text" value="Mr" id="example-tel-input"/>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
-  <div class="col-xs-10">
-    <input name="PASSWORD" class="form-control" type="text" value="'.$password.'" id="example-password-input"/>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-number-input" class="col-xs-2 col-form-label">User Type</label>
-  <div class="col-xs-10">
-    <input name="USERTYPE" class="form-control" type="text" value="42" id="example-number-input"/>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-password-input" class="col-xs-2 col-form-label">VPN Profile</label>
-  <div class="col-xs-10">
-    <input name="VPN" class="form-control" type="text" value="Default" id="example-password-input"/>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 col-form-label"> Status</label>
-  <div class="col-xs-10">
-    <input name="STATUS" class="form-control" type="text" value="'.$status.'" id="example-text-input"/>
-  </div>
+
+  <div class="col-md-9 editInput">
+    <button type="button" id="editSaveButton">Save</button>
+  </div>  <!--end col-md-9 -->
+</div><!-- end row -->
 
 
     </form>
-
-	</div> <!-- Container end -->
-    </div> <!-- end editContainer -->';
+	</div> <!-- Container end -->';
     
+ 
 }
+/*
 else{
     header("Location: index.php");
 }
-
+*/
  
  
  include 'footer.php'; ?>
+
+
