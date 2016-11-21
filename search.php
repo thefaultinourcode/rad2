@@ -34,30 +34,24 @@ if(isset($_POST['searchVal'])){
             WHERE (`f_name` LIKE '%".$searchq."%') OR (`l_name` LIKE '%".$searchq."%') OR (`email` LIKE '%".$searchq."%') OR (`userID` LIKE '%".$searchq."%')")  or die(mysqli_error($link));
       }
     }
-            echo 
-                '
-                <script>
-                function quickEdit(){
-        this.$(".quickEdit").focusout(function(){
-        var data = $(\'input\').serialize();
-            console.log(data);
-                })
-            };
-                </script>
-                <table class="table table-hover">
+
+echo 
+                '<table class="table">
           <thead>
             <tr>
-              <th style="padding-bottom: 0px;"><img src="images/mail.png" alt="Email Icon"></th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>ID</th>
-              <th>Password</th>
-              <th>Status</th>
-              <th>View Tickets</th>
-              <th>Edit</th>
+              <th class=" text-center fa fa-paper-plane fa-1x" aria-hidden="true" style="padding-bottom: 0px;"></th>
+             <th>Name</th>
+             <th>Email</th>
+             <th>ID</th>
+             <th>Password</th>
+             <th>Status</th>
+             <th>Tickets</th>
+             <th>Edit</th>
             </tr>
           </thead>
-          <tbody>';
+              <tbody> 
+';
+
     if($searchq != ''){
         $count = mysqli_num_rows($query);
     }
@@ -70,6 +64,7 @@ if(isset($_POST['searchVal'])){
 
         $counter=0;
         while($row = mysqli_fetch_array($query)){
+            ++$counter;
             $id = $row['id'];
             $fname = $row['f_name'];
             $lname = $row['l_name'];
@@ -84,27 +79,26 @@ if(isset($_POST['searchVal'])){
             }
             $output.='<tr>
                         <td>
-                            <a class="tv8" href="mailto:'.$email.'?Subject=TeamViewer%20Link" ><img src="images/tv8.png" alt="Send TeamView 8 Link to Email" style="width:30px;height:30px;"></a>
+                            <a class="tv8" href="mailto:'.$email.'?Subject=TeamViewer%20Link&body=Here is the link for TeamViewer 8, click to start download: http://download.teamviewer.com/download/version_8x/TeamViewerQS.exe" ><img src="images/tv8.png" alt="Send TeamView 8 Link to Email" style="width:30px;height:30px;"></a>
                              <a class="tv8" href="mailto:'.$email.'?Subject=Certification"><img src="images/cert.png" alt="Send Certification to Email" style="width:30px;height:30px;"></a>
                         </td>
-                        <td><input class="quickEdit" name="flname" value="' . $fname . ' ' . $lname . '"/></td>
-                        <td id='.++$counter.'>' . $email. '</td>
+                        <td>' . $fname . ' ' . $lname . '</td>
+                        <td>' . $email. '</td>
                         <td>' . $userID . '</td>
                         <td>' . $password . '</td>
 
-                        <td><h4><span class="label ' .$classStatus.'">'.$status.'</span></h4></td>
-
-              <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal' . $counter . '">View</button></td>
+                       <td><h4><span class="label ' .$classStatus.'">'.$status.'</span></h4></td>
+              <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal'.$counter.'">View</button><!-- Trigger the modal with a button -->
                         
                         <!-- Modal -->
-                <div id="myModal' . $counter . '" class="modal fade" role="dialog">
+                <div id="myModal'.$counter.'" class="modal fade" role="dialog">
                   <div class="modal-dialog">
 
                     <!-- Modal content-->
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Ticket Information</h4>
+                        <h4 class="modal-title">Most Recent Tickets</h4>
                       </div>
                       <div class="modal-body">
                         <p>' . $fname . ' ' . $lname . ' ticket info will be found here.</p>
@@ -113,15 +107,16 @@ if(isset($_POST['searchVal'])){
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       </div>
                     </div>
-
+                  </td>
                   </div>
                 </div>
+              </td>
               <td>
                   <form method="post" action="edit.php">
                     <input type="submit" name="action" value="Edit"/>
                     <input type="hidden" name="pk" value="'.$id.'"/>
                   </form>
-                </td>
+              </td>
                 </tr>
                 
                 '

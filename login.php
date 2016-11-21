@@ -1,39 +1,78 @@
 <?php
-	session_start();
-$link = mysqli_connect("localhost", "root", "mysql", "test") or die("Error connecting to database: ".mysql_error());
-$name = $_POST['username'];
-$pass = $_POST['password'];
-$query = mysqli_query($link, 'SELECT * FROM users WHERE userID = "'.$name.'"');
 
-if (mysqli_num_rows($query) == 1) {
-	header("Location: index.php");
-	}
+session_start();
+require_once("class.user.php");
+$login = new USER();
 
-	else { 
-		echo ": username and/or password is incorrect. Please try again."; 
-	}
-
-	/*if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-		header("Location: success.php");
-	}
-
-	if (isset($_POST['username']) && isset($_POST['password'])) {
-		if ($_POST['username'] == $username && $_POST['password'] == $password)
+if($login->is_loggedin()!="")
 {
-			$_SESSION['logged_in'] = true;
-			header("Location: success.php");
-		}
-	}*/
+	$login->redirect('index.php');
+}
+
+if(isset($_POST['btn-login']))
+{
+	$uname = strip_tags($_POST['txt_uname_email']);
+	$umail = strip_tags($_POST['txt_uname_email']);
+	$upass = strip_tags($_POST['txt_password']);
+		
+	if($login->doLogin($uname,$umail,$upass))
+	{
+		$login->redirect('index.php');
+	}
+	else
+	{
+		$error = "Incorrect Login Information";
+	}	
+}
+
 ?>
 
-<html>
-	<body>
-		<form method="post" action="login.php">
-			Username:<br/>
-			<input type="text" name="username"><br/>
-			Password</br/>
-			<input type="password" name="password"><br/>
-			<input type="submit" value="Login">
-		</form>
-	</body>
-</html>
+
+<?php include 'header.php'; ?>
+    
+    
+    
+    
+    
+
+<div class="container">
+    <div class="loginForm">
+  <center>
+<h1>Rad2</h1>
+<form method="post" id="login-form"> <!-- beginning of login form -->
+
+<div id="error">
+        <?php
+			if(isset($error))
+			{
+				?>
+                <div class="alert alert-danger">
+                   <i class="fa fa-exclamation-triangle"></i> &nbsp; <?php echo $error; ?>
+                </div>
+                <?php
+			}
+		?>
+  </div>
+
+    
+  <div>
+    <input  value="Timon" type="text" id="exampleInputName2" name="txt_uname_email" placeholder="userID ">
+  </div>
+  <div>
+    <input value="jjjjjj" type="password" id="exampleInputEmail2" name="txt_password" placeholder="Password ">
+  </div>
+  <button type="submit" class="btn btn-primary" name="btn-login">Login</button>
+</form>
+</center>
+</div> <!-- end loginform -->
+</div> <!-- end container -->
+
+
+
+
+<?php include 'footer.php'; ?>
+
+
+
+
+
