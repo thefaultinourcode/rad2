@@ -1,3 +1,4 @@
+#Note that the code on this branch was done by Julian; I'm just handling pushing it up to git
 # Rad2
 Redesigning a database interface
 
